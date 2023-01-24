@@ -9,3 +9,8 @@
 body{
   font-family: 'Nunito Sans', sans-serif;
 }
+
+img{
+  width: 300px;
+  height: 300px;
+}
