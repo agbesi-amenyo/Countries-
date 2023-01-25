@@ -14,3 +14,12 @@ img{
   width: 300px;
   height: 300px;
 }
+
+.back{
+  margin: 10px;
+  color: rgb(51, 161, 224);
+  padding: 10px ;
+}
+.back :hover{
+  cursor: pointer;
+}

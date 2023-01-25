@@ -5,15 +5,18 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from "react-router";
 
 const url = "https://restcountries.com/v3.1/all";
 
 const Countries = () => {
+const navigate = useNavigate(); 
+
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState([false]);
 
@@ -35,7 +38,7 @@ const Countries = () => {
       });
   }, []);
 
-  return (
+  return ( 
     <Container fixed>
       {loading ? (
         <div className="progress">
@@ -54,13 +57,12 @@ const Countries = () => {
               sm={12}
               md={6}
               lg={6}
-              key={country.name.common}
+              key={country.name.common} {...country}
             >
             <Card sx={{ maxWidth: 500 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
-        // height="140"
+        alt={country.name.common}
         image={country.flags.png}
       />
       <CardContent>
@@ -71,22 +73,21 @@ const Countries = () => {
          {`Population :${country.population}`}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-         {`Region :${country.region}`}
+         {`Languages :${country.languages}`}
         </Typography>
         {/* Learn more button */}
-        <Button color="primary" variant="contained">
+        <Button color="primary"  onClick={()=>{navigate("/CountryInfoPage")}} >
               Learn more
-          </Button>
+          </Button> 
       </CardContent>
     </Card>    
-
-
-
             </Grid>
           ))}
         </Grid>
       )}
     </Container>
+  
+
   );
 };
 
